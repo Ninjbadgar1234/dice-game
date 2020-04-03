@@ -5,19 +5,21 @@ var scores = [0, 0];
 // Тоглогчын ээлжиндээ цуглуулж байгаа оноог хадгалах хувьсагч
 roundScore = 0;
 // Шоо аль талаараа буусныг хадгалах хувьсагч хэрэгтэй, 1-6 гэсэн утгыг энэ хувьсагчид санамсаргүйгээр үүсгэж өгнө.
-var dice = Math.floor(Math.random() * 6) + 1;
-
-// <div class="player-score" id="score-0">43</div>
-// window.document.querySelector("#score-0").textContent = dice;
-// document.querySelector("#score-1").textContent = dice;
-// document.querySelector("#score-1").innerHTML = "<em> Yes!</em>";
 
 // Программ эхлэхэд бэлтгэе.
-document.querySelector("#score-0").textContent = 0;
-document.querySelector("#score-1").textContent = 0;
+// document.querySelector("#score-0").textContent = 0; // querySelector oor DOM oos classaar ni Id gaar ni nereer ni geh met haij boldog ch ElementById gaas udaan uchir ni olon elemtees analiz hiideg uchir MUN haih utgiinha id bol # class bol . geh met zvilsiig hiij ugnu
+document.getElementById("score-0").textContent = 0; // harin ElementById ni zuwhun Id gaar ni haih uchraas ilvv hurdag olno. Mun # geh temdeglege hiih shaardlagagvi
+document.getElementById("score-1").textContent = 0;
+document.getElementById("current-0").textContent = 0;
+document.getElementById("current-1").textContent = 0;
 
-document.querySelector("#current-0").textContent = 0;
-document.querySelector("#current-1").textContent = 0;
+var diceDom = document.querySelector(".dice");
+diceDom.style.display = "none";
+// console.log("Шоо: " + diceNumber);
 
-document.querySelector(".dice").style.display = "none";
-console.log("Шоо: " + dice);
+document.querySelector(".btn-roll").addEventListener("click", function() {
+  var diceNumber = Math.floor(Math.random() * 6) + 1;
+  diceDom.style.display = "block";
+  diceDom.src = "dice-" + diceNumber + ".png";
+  //   alert("SHoo buulaa: " + diceNumber);
+});
